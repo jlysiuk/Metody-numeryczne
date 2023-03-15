@@ -1,7 +1,4 @@
-import numpy as np
-import bisections
 import front
-import regula_falsi
 
 # f = lambda x: -5*x**4 + 2*x**2 + 3*x +12
 #
