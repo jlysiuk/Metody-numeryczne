@@ -1,9 +1,10 @@
 import numpy as np
 import bisections
+import regula_falsi
 
 
 def choose_fuction_type():
-    print('chcesz znaleźć miesjce zerowe funkcji:\n'
+    print('chcesz znaleźć miejsce zerowe funkcji:\n'
           '1 - wielomianowej\n'
           '2 - trygonometrycznej\n'
           '3 - wykładniczej\n'
@@ -21,9 +22,9 @@ def choose_fuction_type():
         for i in range(i):
             tab[i] = float(tab[i])
 
-        print('chcesz znaleźć miesjce zerowe funkcji za pomocą:\n'
+        print('chcesz znaleźć miejsce zerowe funkcji za pomocą:\n'
               '1 - metody bisekcji\n'
-              '2 - reguły falsi')
+              '2 - regula falsi')
         case = int(input('wybierz 1 lub 2: '))
         if case == 1:
             print('wybrano metodę bisekcji. Chcesz zatrzymać poszukiwanie za pomocą:\n'
@@ -35,11 +36,26 @@ def choose_fuction_type():
                 b = float(input('wybierz koniec przedziału: '))
                 d = float(input('wybierz tolerancję: '))
                 print('miejsce zerowe to:', bisections.bisection_tolerance_poly(tab, a, b, d))
-            # if case == 2:
-            # zrob do iteracyjnego
+            if case == 2:
+                a = float(input('wybierz początek przedziału: '))
+                b = float(input('wybierz koniec przedziału: '))
+                i = int(input('wprowadź limit iteracji: '))
+                print('miejsce zerowe to:', bisections.bisection_iteration_poly(tab, a, b, i))
         if case == 2:
-            print('wybrano regułę falsi.')
-            # dopisz do falsi
+            print('wybrano regula falsi.Chcesz zatrzymać poszukiwanie za pomocą:\n'
+                  '1 - ustawienia tolerancji (epsilon)\n'
+                  '2 - ustawienia limitu iteracji')
+            case = int(input('wybierz 1 lub 2: '))
+            if case == 1:
+                a = float(input('wybierz początek przedziału: '))
+                b = float(input('wybierz koniec przedziału: '))
+                d = float(input('wybierz tolerancję: '))
+                print('miejsce zerowe to:', regula_falsi.falsi_tolerance_poly(tab, a, b, d))
+            if case == 2:
+                a = float(input('wybierz początek przedziału: '))
+                b = float(input('wybierz koniec przedziału: '))
+                i = int(input('wprowadź limit iteracji: '))
+                print('miejsce zerowe to:', regula_falsi.falsi_iteration_poly(tab, a, b, i))
 
     elif case == 2:
         print('Wybrano funkcję trygonometryczną')
@@ -52,9 +68,9 @@ def choose_fuction_type():
         if case == 2:
             print('Funkcja przyjmnie postać cos(x)')
             f = lambda x: np.cos(x)
-        print('chcesz znaleźć miesjce zerowe funkcji za pomocą:\n'
+        print('chcesz znaleźć miejsce zerowe funkcji za pomocą:\n'
               '1 - metody bisekcji\n'
-              '2 - reguły falsi')
+              '2 - regula falsi')
         case = int(input('wybierz 1 lub 2: '))
         if case == 1:
             print('wybrano metodę bisekcji. Chcesz zatrzymać poszukiwanie za pomocą:\n'
@@ -66,11 +82,27 @@ def choose_fuction_type():
                 b = float(input('wybierz koniec przedziału: '))
                 d = float(input('wybierz tolerancję: '))
                 print('miejsce zerowe to:', bisections.bisection_tolerance(f, a, b, d))
-            # if case == 2:
-            # zrob do iteracyjnego
+            if case == 2:
+                a = float(input('wybierz początek przedziału: '))
+                b = float(input('wybierz koniec przedziału: '))
+                i = int(input('wprowadź limit iteracji: '))
+                print('miejsce zerowe to:', bisections.bisection_iteration(f, a, b, i))
         if case == 2:
-            print('wybrano regułę falsi.')
-            # dopisz do falsi
+            print('wybrano regula falsi. Chcesz zatrzymać poszukiwanie za pomocą:\n'
+                  '1 - ustawienia tolerancji (epsilon)\n'
+                  '2 - ustawienia limitu operacji')
+            case = int(input('wybierz 1 lub 2: '))
+            if case == 1:
+                a = float(input('wybierz początek przedziału: '))
+                b = float(input('wybierz koniec przedziału: '))
+                d = float(input('wybierz tolerancję: '))
+                print('miejsce zerowe to:', regula_falsi.falsi_tolerance(f, a, b, d))
+            if case == 2:
+                a = float(input('wybierz początek przedziału: '))
+                b = float(input('wybierz koniec przedziału: '))
+                i = int(input('wprowadź limit iteracji: '))
+                print('miejsce zerowe to:', regula_falsi.falsi_iteration(f, a, b, i))
+
     elif case == 3:
         print('Wybrano funkcję wykładniczą')
     elif case == 4:
