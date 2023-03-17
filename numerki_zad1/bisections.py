@@ -1,7 +1,7 @@
 from typing import Tuple
-
+import plotting
 import numpy as np
-
+from matplotlib import pyplot as plt
 import horner
 
 
@@ -23,10 +23,10 @@ def bisection_tolerance(f, a: float, b: float, d: float, c=1) -> float | tuple[f
 
     # sprawdzenie, czy któryś z krańców przedziału nie jest miejscem zerowym
     if np.abs(f(a)) < d:
-        return a
+        return a, c
 
     if np.abs(f(b)) < d:
-        return b
+        return b, c
 
     # wyznaczanie środka przedziału
     x = (a + b) / 2
@@ -51,6 +51,8 @@ def bisection_tolerance_poly(tab, a: float, b: float, d: float, c=1) -> tuple[fl
     :return:
     """
     c = c + 1
+    aa = a
+    bb = b
     if np.sign(horner.horner_result(tab, a)) == np.sign(horner.horner_result(tab, b)):
         print('wartości na początku i końcu przedziału są tych samych znaków. Wprowadź inne parametry.')
         aa = float(input('Podaj Parametr a: '))
