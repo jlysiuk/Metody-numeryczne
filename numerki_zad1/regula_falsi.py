@@ -38,7 +38,7 @@ def falsi_tolerance(f, a, b, d, count=0) -> int | tuple[Any, int | Any]:
             a = c
 
 
-def falsi_tolerance_poly(tab, a, b, d, count=0) -> int | tuple[Any, int | Any]:
+def falsi_tolerance_poly(tab, a, b, d, count = 0) -> int | tuple[Any, int | Any]:
     """
     wyznacza miejsce zerowe funkcji za pomocą Regula falsi
     :param tab: tablica współczynników wielomianu

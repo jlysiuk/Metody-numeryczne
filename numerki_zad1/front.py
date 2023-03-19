@@ -68,7 +68,7 @@ def choose_fuction_type():
         c = float(input('Podaj c:'))
         def f(x):
             return a * b**x + c
-        print(f'Twoja funkcja to ({a}) + ({b})^x + ({c})')
+        print(f'Twoja funkcja to ({a}) *3 ({b})^x + ({c})')
         choose_method(f)
 
     elif case == 4:
