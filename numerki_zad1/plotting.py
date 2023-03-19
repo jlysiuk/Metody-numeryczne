@@ -32,4 +32,18 @@ def poly_plot(tab, a, b, x1):
     plt.plot(x1, horner.horner_result(tab, x1), 'ro')
     plt.show()
 
+
+def plot(f, a, b, x1):
+    """
+        :param f: wzór funkcji
+        :param a: dolne ograniczenie przedziału
+        :param b: górne ograniczenie przedziału
+        :param x1: wartość x dla której znaleziono miejsce zerowe
+        :return:
+        """
+    # zmienna x_range przechowuje przedział x'ów dla których rysujemy wykres
+    x_range = np.arange(a, b + 1)
+    plt.plot(x_range, f(x_range))
+    plt.plot(x1, f(x1), 'ro')
+    plt.show()
 # def trig_plot()

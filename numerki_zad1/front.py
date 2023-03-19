@@ -51,10 +51,14 @@ def choose_fuction_type():
                          'Wybierz funkcję sin lub cos: '))
         if case == 1:
             print('Funkcja przyjmnie postać sin(x)')
-            f = lambda x: np.sin(x)
+
+            def f(x):
+                return np.sin(x)
         if case == 2:
             print('Funkcja przyjmnie postać cos(x)')
-            f = lambda x: np.cos(x)
+
+            def f(x):
+                return np.cos(x)
         choose_method(f)
 
     elif case == 3:
@@ -62,23 +66,23 @@ def choose_fuction_type():
         a = float(input('Funkcja przybierze postać a * b^x + c. Podaj a:'))
         b = float(input('Podaj b:'))
         c = float(input('Podaj c:'))
-        f = lambda x: a * (b ** x) + c
+        def f(x):
+            return a * b**x + c
         print(f'Twoja funkcja to ({a}) + ({b})^x + ({c})')
         choose_method(f)
 
     elif case == 4:
         print('Wybrano funkcję złożoną.\n'
               'Dostępne funkcje:\n'
-              '1 - f(x) = 2.5 * x^(sin(x)) - 17\n'
-              '2 - f(x) = cos(2^x)\n'
-              '3 - f(x) = x^(3x^2 + 1.5x - 12) - 2')
-        case = int(input("Wybierz od 1, 2 lub 3: "))
+              '1 - f(x) = 2.5 * x^(sin(x)) - 2\n'
+              '2 - f(x) = cos(2^x)\n')
+        case = int(input("Wybierz 1 lub 2: "))
         if case == 1:
-            f = lambda x: 2.5 * x ** (np.sin(x)) - 17
-        if case == 1:
-            f = lambda x: np.cos(2 ** x)
-        if case == 1:
-            f = lambda x: x ** (3 * x ** 2 + 1.5 * x - 12) - 2
+            def f(x):
+                return 2.5 * x ** (np.sin(x)) - 2
+        if case == 2:
+            def f(x):
+                return np.cos(2 ** x)
         choose_method(f)
 
 
@@ -95,9 +99,13 @@ def choose_method(f):
     b = float(input('Wybierz koniec przedziału: '))
     if case == 1:
         d = float(input('Wybierz tolerancję: '))
+        plotting.plot(f, a, b, bisections.bisection_tolerance(f, a, b, d)[0])
+        plotting.plot(f, a, b, regula_falsi.falsi_tolerance(f, a, b, d)[0])
         print('Miejsce zerowe wyznaczone metodą bisekcji to:', bisections.bisection_tolerance(f, a, b, d))
         print('Miejsce zerowe wyznaczone metodą regula falsi to:', regula_falsi.falsi_tolerance(f, a, b, d))
     if case == 2:
         i = int(input('Wprowadź limit iteracji: '))
+        plotting.plot(f, a, b, bisections.bisection_iteration(f, a, b, i))
+        plotting.plot(f, a, b, regula_falsi.falsi_iteration(f, a, b, i))
         print('Miejsce zerowe wyznaczone metodą bisekcji to:', bisections.bisection_iteration(f, a, b, i))
         print('Miejsce zerowe wyznaczone metodą regula falsi to:', regula_falsi.falsi_iteration(f, a, b, i))
