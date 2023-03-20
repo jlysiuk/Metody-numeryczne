@@ -25,7 +25,7 @@ def choose_fuction_type():
         print(tab)
         print('Chcesz zatrzymać poszukiwanie za pomocą:\n'
               '1 - Ustawienia tolerancji (epsilon)\n'
-              '2 - Ustawienia limitu operacji')
+              '2 - Ustawienia limitu iteracji')
         case = int(input('Wybierz 1 lub 2: '))
         if case == 1:
             a = float(input('Wybierz początek przedziału: '))
