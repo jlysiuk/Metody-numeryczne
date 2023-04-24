@@ -35,6 +35,7 @@ def bisection_tolerance(f, a: float, b: float, d: float, c=1) -> float | tuple[f
     if np.abs(f(x)) < d:
         return x, c
 
+    # sprawdzenie w której połowie przedziału wartości funkcji zmieniają znak
     if f(a) * f(x) < 0:
         return bisection_tolerance(f, a, x, d, c)
     else:
@@ -73,6 +74,7 @@ def bisection_tolerance_poly(tab, a: float, b: float, d: float, c=1) -> tuple[fl
     if np.abs(horner.horner_result(tab, x)) < d:
         return x, c
 
+    # sprawdzenie w której połowie przedziału wartości funkcji zmieniają znak
     if horner.horner_result(tab, a) * horner.horner_result(tab, x) < 0:
         return bisection_tolerance_poly(tab, a, x, d, c)
     else:
@@ -95,7 +97,9 @@ def bisection_iteration(f, a: float, b: float, i: int) -> float:
         bisection_tolerance(f, aa, bb, i)
 
     for i in range(i):
+        # wyznaczanie środka przedziału
         x = (a + b) / 2
+        # sprawdzenie w której połowie przedziału wartości funkcji zmieniają znak
         if f(x) * f(a) < 0:
             b = x
         else:
@@ -118,7 +122,9 @@ def bisection_iteration_poly(tab, a: float, b: float, i: int) -> float:
         bisection_tolerance(tab, aa, bb, i)
 
     for i in range(i):
+        # wyznaczanie środka przedziału
         x = (a + b) / 2
+        # sprawdzenie w której połowie przedziału wartości funkcji zmieniają znak
         if horner.horner_result(tab, x) * horner.horner_result(tab, a) < 0:
             b = x
         else:

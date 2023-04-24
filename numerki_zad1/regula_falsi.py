@@ -19,7 +19,7 @@ def falsi_tolerance(f, a, b, d, count=0) -> int | tuple[Any, int | Any]:
         bb = float(input('Podaj Parametr b: '))
         falsi_tolerance(f, aa, bb, d)
 
-    c = a  # Initialize result
+    c = a
 
     while True:
         count = count + 1
